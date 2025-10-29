@@ -1,0 +1,46 @@
+@startuml Perfume
+skinparam classAttributeIconSize 0
+
+class Perfume {
+  - id: int
+  - nombre: string
+  - tamanio: float
+  - precio: decimal
+  - imagen: string
+  - estado: boolean
+  - marca: Marca
+  - aroma: Aroma
+  - genero: Genero
+}
+
+class Marca {
+  - id: int
+  - nombre: string
+  - estado: boolean
+}
+
+class Aroma {
+  - id: int
+  - nombre: string
+  - estado: boolean
+}
+
+class Genero {
+  - id: int
+  - nombre: string
+  - estado: boolean
+}
+
+class PerfumeService {
+  +crearPerfume(perfume: Perfume): void
+  +editarPerfume(perfume: Perfume): void
+  +eliminarPerfume(id: int): void
+  +listarPerfumes(): List<Perfume>
+  +verDetalle(id: int): Perfume
+}
+
+Perfume --> Marca
+Perfume --> Aroma
+Perfume --> Genero
+PerfumeService --> Perfume
+@enduml

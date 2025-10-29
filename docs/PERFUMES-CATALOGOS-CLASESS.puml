@@ -1,0 +1,44 @@
+@startuml Catalogos
+skinparam classAttributeIconSize 0
+
+' === Sección: Gestión de Catálogos ===
+class Marca {
+  - id: int
+  - nombre: string
+  - estado: boolean
+}
+class MarcaService {
+  +crearMarca(marca: Marca): void
+  +editarMarca(marca: Marca): void
+  +eliminarMarca(id: int): void
+  +listarMarcas(): List<Marca>
+}
+
+class Aroma {
+  - id: int
+  - nombre: string
+  - estado: boolean
+}
+class AromaService {
+  +crearAroma(aroma: Aroma): void
+  +editarAroma(aroma: Aroma): void
+  +eliminarAroma(id: int): void
+  +listarAromas(): List<Aroma>
+}
+
+class Genero {
+  - id: int
+  - nombre: string
+  - estado: boolean
+}
+class GeneroService {
+  +crearGenero(genero: Genero): void
+  +editarGenero(genero: Genero): void
+  +eliminarGenero(id: int): void
+  +listarGeneros(): List<Genero>
+}
+
+MarcaService --> Marca
+AromaService --> Aroma
+GeneroService --> Genero
+@enduml

@@ -1,0 +1,28 @@
+@startuml Casos de uso Administrador - Gestion de perfumes
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecaseFontSize 12
+
+actor Administrador as Admin
+
+package "Administrador" {
+
+  usecase "Login" as AdminLogin
+
+  package "Gestión de Perfumes" {
+    usecase "Crear Perfume"       as UC_CreatePerfume
+    usecase "Editar Perfume"      as UC_EditPerfume
+    usecase "Eliminar Perfume"    as UC_DeletePerfume
+    usecase "Listar Perfumes"     as UC_ListPerfumes_Admin
+    usecase "Ver Detalle Perfume" as UC_ViewPerfume_Admin
+  }
+}
+
+Admin --> AdminLogin
+Admin --> UC_CreatePerfume
+Admin --> UC_EditPerfume
+Admin --> UC_DeletePerfume
+Admin --> UC_ListPerfumes_Admin
+Admin --> UC_ViewPerfume_Admin
+
+@enduml

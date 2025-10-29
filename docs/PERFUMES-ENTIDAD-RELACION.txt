@@ -1,0 +1,54 @@
+Table usuario {
+  id_usuario integer [pk, not null, note: "Identificador único del usuario"]
+  username varchar(32) [not null, note: "Nombre de usuario para login"]
+  password varchar(256) [not null, note: "Contraseña cifrada del usuario"]
+  estado integer [not null, note: "Estado del usuario (activo/inactivo)"]
+}
+
+Table usuario_rol {
+  id_usuario_rol integer [pk, not null, note: "Identificador único del usuario-rol"]
+  id_usuario integer [not null, note: "Referencia al usuario"]
+  id_rol integer [not null, note: "Referencia al rol"]
+}
+
+Table rol {
+  id_rol integer [pk, not null, note: "Identificador único del rol"]
+  nombre varchar(32) [not null, note: "Nombre del rol"]
+  estado integer [not null, note: "Estado del rol (activo/inactivo)"]
+}
+
+Table marcas {
+  id_marca integer [pk, not null, note: "Identificador único de la marca"]
+  nombre varchar(32) [not null, note: "Nombre de la marca"]
+  estado integer [not null, note: "Estado de la marca (activo/inactivo)"]
+}
+
+Table genero {
+  id_genero integer [pk, not null, note: "Identificador único del género"]
+  nombre varchar(32) [not null, note: "Nombre del género (masculino, femenino, unisex)"]
+  estado integer [not null, note: "Estado del género (activo/inactivo)"]
+}
+
+Table aromas {
+  id_aroma integer [pk, not null, note: "Identificador único del aroma"]
+  nombre varchar(32) [not null, note: "Nombre del aroma"]
+  estado integer [not null, note: "Estado del aroma (activo/inactivo)"]
+}
+
+Table perfumes {
+  id_perfume integer [pk, not null, note: "Identificador único del perfume"]
+  nombre varchar(50) [not null, note: "Nombre del perfume"]
+  id_marca integer [not null, note: "Referencia a la marca"]
+  id_aroma integer [not null, note: "Referencia al aroma"]
+  id_genero integer [not null, note: "Referencia al género"]
+  tamanio float [not null, note: "Tamaño del perfume en mililitros"]
+  precio numeric(18,2) [not null, note: "Precio del perfume en dólares"]
+  imagen varchar(256) [note: "URL de la imagen del perfume"]
+  estado integer [not null, note: "Estado del perfume (activo/inactivo)"]
+}
+
+Ref: usuario_rol.id_usuario > usuario.id_usuario
+Ref: usuario_rol.id_rol > rol.id_rol
+Ref: perfumes.id_marca > marcas.id_marca
+Ref: perfumes.id_aroma > aromas.id_aroma
+Ref: perfumes.id_genero > genero.id_genero

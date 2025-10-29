@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow-sm mt-4">
+  <div class="card-header">
+    <h3 class="mb-0"><i class="bi bi-flower1"></i> Detalle del Perfume</h3>
+  </div>
+  <div class="card-body">
+    <div class="row gx-5">
+      <div class="col-md-6 d-flex flex-column">
+        <dl class="row">
+          <dt class="col-sm-4">ID</dt>
+          <dd class="col-sm-8">{{ perfume.id_perfume }}</dd>
+
+          <dt class="col-sm-4">Nombre</dt>
+          <dd class="col-sm-8">{{ perfume.nombre }}</dd>
+
+          <dt class="col-sm-4">Marca</dt>
+          <dd class="col-sm-8">{{ perfume.id_marca.nombre }}</dd>
+
+          <dt class="col-sm-4">Aroma</dt>
+          <dd class="col-sm-8">{{ perfume.id_aroma.nombre }}</dd>
+
+          <dt class="col-sm-4">Género</dt>
+          <dd class="col-sm-8">{{ perfume.id_genero.nombre }}</dd>
+
+          <dt class="col-sm-4">Tamaño (ml)</dt>
+          <dd class="col-sm-8">{{ perfume.tamanio }}</dd>
+
+          <dt class="col-sm-4">Precio</dt>
+          <dd class="col-sm-8">${{ perfume.precio }}</dd>
+
+          <dt class="col-sm-4">Estado</dt>
+          <dd class="col-sm-8">
+            {% if perfume.estado == 1 %}
+              <span class="badge bg-success">Activo</span>
+            {% else %}
+              <span class="badge bg-secondary">Inactivo</span>
+            {% endif %}
+          </dd>
+        </dl>
+        <div class="align-self-start">
+          <a href="{% url 'lista_perfumes' %}" class="btn btn-secondary mt-3">
+            <i class="bi bi-arrow-left"></i> Volver a la lista
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        {% if perfume.imagen %}
+        <div class="mb-2">
+          <h5 class="mb-0">Imagen</h5>
+          <hr class="my-2">
+          <img
+            src="{{ perfume.imagen.url }}"
+            alt="Imagen del Perfume"
+            class="img-fluid rounded shadow-sm border"
+            style="max-height: 500px;"
+          />
+        </div>
+        {% else %}
+          <p class="text-muted mt-5">Sin imagen disponible</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

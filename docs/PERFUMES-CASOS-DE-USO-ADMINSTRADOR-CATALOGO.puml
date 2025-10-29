@@ -1,0 +1,46 @@
+@startuml Casos de uso Administrador - Gestion de catalogos
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecaseFontSize 12
+
+actor Administrador as Admin
+
+package "Administrador" {
+
+  usecase "Login" as AdminLogin
+
+  package "Gestión de Catálogos" {
+    usecase "Crear Marca"    as UC_CreateMarca
+    usecase "Editar Marca"   as UC_EditMarca
+    usecase "Eliminar Marca" as UC_DeleteMarca
+    usecase "Listar Marcas"  as UC_ListMarca
+
+    usecase "Crear Aroma"    as UC_CreateAroma
+    usecase "Editar Aroma"   as UC_EditAroma
+    usecase "Eliminar Aroma" as UC_DeleteAroma
+    usecase "Listar Aromas"  as UC_ListAroma
+
+    usecase "Crear Género"    as UC_CreateGenero
+    usecase "Editar Género"   as UC_EditGenero
+    usecase "Eliminar Género" as UC_DeleteGenero
+    usecase "Listar Géneros"  as UC_ListGenero
+  }
+}
+
+Admin --> AdminLogin
+
+Admin --> UC_CreateMarca
+Admin --> UC_EditMarca
+Admin --> UC_DeleteMarca
+Admin --> UC_ListMarca
+
+Admin --> UC_CreateAroma
+Admin --> UC_EditAroma
+Admin --> UC_DeleteAroma
+Admin --> UC_ListAroma
+
+Admin --> UC_CreateGenero
+Admin --> UC_EditGenero
+Admin --> UC_DeleteGenero
+Admin --> UC_ListGenero
+@enduml

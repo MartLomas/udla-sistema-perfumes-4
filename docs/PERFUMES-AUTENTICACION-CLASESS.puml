@@ -1,0 +1,24 @@
+@startuml Autenticacion
+skinparam classAttributeIconSize 0
+
+class Usuario {
+  - id: int
+  - username: string
+  - password: string
+  - estado: boolean
+  - rol: Rol
+}
+
+class Rol {
+  - id: int
+  - nombre: string
+}
+
+class AuthService {
+  +login(username: string, password: string): Usuario
+  +logout(usuario: Usuario): void
+}
+
+Usuario "1" --> "1" Rol
+AuthService --> Usuario
+@enduml

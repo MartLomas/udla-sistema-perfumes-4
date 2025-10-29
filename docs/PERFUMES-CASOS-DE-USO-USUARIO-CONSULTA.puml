@@ -1,0 +1,21 @@
+@startuml Casos de uso Usuario de Consulta - Gestion de perfumes
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecaseFontSize 12
+
+actor "Usuario de Consulta" as User
+
+package "Usuario de Consulta" {
+
+  usecase "Login" as UserLogin
+
+  package "Gestión de Perfumes" {
+    usecase "Listar Perfumes"     as UC_ListPerfumes_User
+    usecase "Ver Detalle Perfume" as UC_ViewPerfume_User
+  }
+}
+
+User --> UserLogin
+User --> UC_ListPerfumes_User
+User --> UC_ViewPerfume_User
+@enduml
